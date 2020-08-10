@@ -1,0 +1,76 @@
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - send_idea
+  - trigger_contribute_idea
+  - deny_submitting
+  - thankyou
+
+entities:
+- ideas
+- idea_content
+
+slots:
+  ideas:
+    type: text
+  idea_content:
+    type: unfeaturized
+
+responses:
+  utter_greet:
+  - text: "Em chào anh chị ạ"
+
+  utter_guide_idea:
+  - text: "Vâng, em có thể tiếp nhận ý tưởng của anh chị để gửi tới Awesome Ideas Box ạ.\n 
+          Một số category gợi ý anh chị có thể tham khảo như sau: \n
+            - Môi trường làm việc\n
+            - Cơ sở vật chất và văn phòng \n
+            - Quy định và chính sách phúc lợi \n
+            - Lương, thưởng, trợ cấp \n
+            - Sự kiện và các hoạt động nội bộ \n
+            - Nhân sự và tuyển dụng \n
+            - Thông tin chung về công ty \n
+            - Công đoàn \n
+            - Khác \n
+          Không biết anh chị có muốn gửi ý tưởng luôn không ạ?."
+
+  utter_ask_idea_content:
+  - text: "Vậy anh chị gửi ý tưởng cho em với ạ"
+  
+  utter_confirm_idea_content:
+  - text: "Em xin xác nhận lại nội dung ý tưởng của anh chị trước khi gửi đi ạ:\n{idea_content}"
+
+  utter_received_idea:
+  - text: "Em đã ghi nhận ý tưởng của anh chị rôì ạ, cảm ơn anh chị rất nhiều. Sau này anh chị cũng có thể quay lại để kiểm tra trạng thái ý tưởng của mình đấy ạ"
+
+  utter_not_submit:
+  - text: "Em hiểu rồi ạ, em sẽ không ghi nhận ý tưởng vừa rồi của anh chị ạ. Nếu muốn đóng góp ý tưởng khác thì anh chị lại quay lại nhé."
+
+  utter_no_worries:
+  - text: "Hihi không có gì ạ"
+
+  utter_goodbye:
+  - text: "Vâng chào anh chị ạ, có gì cần hỗ trợ thì anh chị cứ gọi em nha!"
+
+  utter_fallback:
+  - text: "Xin lỗi, hiện em chưa được huấn luyện để trả lời câu hỏi này ạ. Mong anh chị thông cảm ạ"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+actions:
+- utter_greet
+- utter_goodbye
+- utter_guide_idea
+- utter_ask_idea_content
+- utter_confirm_idea_content
+- utter_received_idea
+- utter_fallback
+- action_reset_all_slots
+- utter_no_worries
+
+forms:
+  - idea_form
